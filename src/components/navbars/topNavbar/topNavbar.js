@@ -77,7 +77,7 @@ class Header extends React.Component {
             alignItems="center"
             className={classes.container}
           >
-            <IconButton onClick={() => (this.props?.back() ?? null)}><ArrowBackIosIcon className={classes.icon} fontSize="small" /></IconButton>
+            <IconButton onClick={() => (this.props?.name ? this.props?.back() : null)}><ArrowBackIosIcon className={classes.icon} fontSize="small" /></IconButton>
             <Typography color="textHeading" variant="h6">{this.props?.name ? this.props?.name : "View Audience"}</Typography>
           </Grid>
         </AppBar>
