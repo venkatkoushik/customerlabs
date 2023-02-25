@@ -85,13 +85,13 @@ export let NetWorkCallMethods = {
 };
 
 export let Optionsfordropdown = [
-    { label: "First Name", Value: "first_name", disabled: false },
-    { label: "Last Name", Value: "last_name", disabled: false },
-    { label: "Gender", Value: "gender", disabled: false },
-    { label: "Age", Value: "age", disabled: false },
-    { label: "Account Name", Value: "account_name", disabled: false },
-    { label: "City", Value: "city", disabled: false },
-    { label: "State", Value: "state", disabled: false },
+    { label: "First Name", Value: "first_name", disabled: false, color: "#5ddb78" },
+    { label: "Last Name", Value: "last_name", disabled: false, color: "#5ddb78" },
+    { label: "Gender", Value: "gender", disabled: false, color: "#5ddb78" },
+    { label: "Age", Value: "age", disabled: false, color: "#5ddb78" },
+    { label: "Account Name", Value: "account_name", disabled: false, color: "#d24572" },
+    { label: "City", Value: "city", disabled: false, color: "#5ddb78" },
+    { label: "State", Value: "state", disabled: false, color: "#5ddb78" },
 
 
 
