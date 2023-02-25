@@ -1,0 +1,82 @@
+<mxfile host="app.diagrams.net" modified="2021-07-15T16:31:19.843Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" etag="U2lBjAbrEP6ceyscKyz0" version="14.8.4" type="gitlab">
+  <diagram id="Qv8AzPJ3UQM1M2c9DtLw" name="Page-1">
+    <mxGraphModel dx="868" dy="450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dXh47vDFmOO9ZGh3lc0k-1" target="dXh47vDFmOO9ZGh3lc0k-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-1" value="App" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="100" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dXh47vDFmOO9ZGh3lc0k-2" target="dXh47vDFmOO9ZGh3lc0k-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-2" value="Apollo Client" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="370" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dXh47vDFmOO9ZGh3lc0k-4" target="dXh47vDFmOO9ZGh3lc0k-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-4" value="App Error Boundary" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="370" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dXh47vDFmOO9ZGh3lc0k-8" target="dXh47vDFmOO9ZGh3lc0k-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-8" value="App Auth" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#82b366;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="370" y="400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dXh47vDFmOO9ZGh3lc0k-10" target="dXh47vDFmOO9ZGh3lc0k-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dXh47vDFmOO9ZGh3lc0k-10" target="dXh47vDFmOO9ZGh3lc0k-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-10" value="App Theme" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;" vertex="1" parent="1">
+          <mxGeometry x="370" y="500" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-14" value="CSS Baseline" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;" vertex="1" parent="1">
+          <mxGeometry x="150" y="500" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dXh47vDFmOO9ZGh3lc0k-16" target="dXh47vDFmOO9ZGh3lc0k-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-16" value="App Alert" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#d6b656;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="370" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dXh47vDFmOO9ZGh3lc0k-18" target="dXh47vDFmOO9ZGh3lc0k-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-18" value="App Dialog" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#b85450;fillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="370" y="700" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dXh47vDFmOO9ZGh3lc0k-20" target="dXh47vDFmOO9ZGh3lc0k-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-20" value="App Drawer" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;" vertex="1" parent="1">
+          <mxGeometry x="370" y="790" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dXh47vDFmOO9ZGh3lc0k-22" target="dXh47vDFmOO9ZGh3lc0k-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-22" value="App Backdrop" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#2D7600;fillColor=#60a917;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="370" y="890" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dXh47vDFmOO9ZGh3lc0k-24" target="dXh47vDFmOO9ZGh3lc0k-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-24" value="Router App" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#005700;fillColor=#008a00;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="370" y="980" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-26" value="&lt;h1&gt;Component Tree of React App&lt;/h1&gt;&lt;p&gt;The below diagram explains the component Architecture of the App&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="10" width="280" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="dXh47vDFmOO9ZGh3lc0k-29" value="Based on your Route &lt;br&gt;your component will &lt;br&gt;mount to the tree" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=#ffffff;gradientColor=#80FFBF;" vertex="1" parent="1">
+          <mxGeometry x="340" y="1080" width="180" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

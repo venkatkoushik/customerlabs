@@ -1,0 +1,101 @@
+ ::-webkit-scrollbar {
+   width: 6px !important;
+ }
+
+ /* this targets the default scrollbar (compulsory) */
+
+ /* Track */
+ ::-webkit-scrollbar-track {
+   background: transparent !important;
+ }
+
+ /* Hide Number Input Roller */
+ input[type=number]::-webkit-inner-spin-button,
+ input[type=number]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+   margin            : 0;
+ }
+
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+   background   : rgba(0, 0, 0, 0.23) !important;
+   border-radius: 24px;
+   transition   : all 0.5s;
+   cursor       : pointer;
+ }
+
+ /* Handle on hover */
+ ::-webkit-scrollbar-thumb:hover {
+   background: rgba(146, 151, 165, 1) !important;
+ }
+
+ /* this will style the thumb, ignoring the track */
+
+ ::-webkit-scrollbar-button {
+   background-color: transparent !important;
+ }
+
+ /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+ ::-webkit-scrollbar-corner {
+   background-color: transparent !important;
+ }
+
+ /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+ @font-face {
+   font-family: 'manage_care_semibold';
+   src        : url('./font/proxima_nova_semibold.woff') format('woff');
+ }
+
+ @font-face {
+   font-family: 'manage_care_bold';
+   src        : url('./font/proxima_nova_bold.woff') format('woff');
+ }
+
+ @font-face {
+   font-family: 'crayond_bold';
+   src        : url('./font/Poppins-Bold.ttf');
+ }
+
+ @font-face {
+   font-family: 'crayond_medium';
+   src        : url('./font/Poppins-Medium.ttf');
+ }
+
+ @font-face {
+   font-family: 'crayond_regular';
+   src        : url('./font/Poppins-Regular.ttf');
+ }
+
+ .MuiPickersDateRangePickerInput-root {
+   width: 100%;
+ }
+
+ /* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_9785">Text with this font applied</p> */
+ body {
+   font-family: 'crayond_medium' !important;
+   height: 100%;
+ }
+
+ code {
+   font-family: 'crayond_medium' !important;
+ }
+
+ textarea:focus,
+ input:focus {
+   font-family: 'crayond_medium' !important;
+ }
+
+ input,
+ select,
+ textarea {
+   font-family: 'crayond_medium' !important;
+ }
+
+ html {
+   height: 100%;
+ }
+
+ #root {
+   height: 100%;
+ }

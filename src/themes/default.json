@@ -1,0 +1,51 @@
+{
+    "direction":"ltr",
+    "overrides": {
+        "MuiCssBaseline": {
+            "@global": { 
+                ".MuiFormLabel-asterisk": {
+                    "color": "red"
+                }
+            }
+        }
+    },
+    "palette": {
+        "type":"light",
+        "extratext":{
+            "primary":"#fff"
+        },
+        "common": {
+            "black": "#000",
+            "white": "#fff"
+        },
+        "background": {
+            "paper": "#fff",
+            "default": "#fafafa"
+        },
+        "primary": {
+            "light": "#ff33b9",
+            "main": "#39aebc",
+            "dark": "#b20075",
+            "contrastText": "#fff"
+        },
+        "secondary": {
+            "light": "#766dde",
+            "main": "#5449d6",
+            "dark": "#3a3395",
+            "contrastText": "#fff"
+        },
+        "error": {
+            "light": "#e57373",
+            "main": "#f44336",
+            "dark": "#d32f2f",
+            "contrastText": "#fff"
+        },
+        "text": {
+            "primary": "rgba(0, 0, 0, 0.87)",
+            "secondary": "rgba(0, 0, 0, 0.68)",
+            "disabled": "rgba(0, 0, 0, 0.38)",
+            "hint": "rgba(0, 0, 0, 0.38)",
+            "heading":"#fff"
+        }
+    }
+}
