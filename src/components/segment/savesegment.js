@@ -15,7 +15,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useContext } from "react";
-import { AlertContext, DrawerContext } from "../../contexts";
+import { AlertContext, BackdropContext, DrawerContext } from "../../contexts";
 import IndeterminateCheckBoxsvg from "../../assets/Group 1.svg"
 import axios from "axios";
 const useStyles = makeStyles((theme) => ({
@@ -90,6 +90,7 @@ function Savesegment() {
     // }
     const drawer = useContext(DrawerContext)
     const alert = useContext(AlertContext)
+    const backdrop = useContext(BackdropContext)
     const classes = useStyles();
     const [state, setState] = useState({
         segmentname: "",
@@ -147,56 +148,76 @@ function Savesegment() {
         debugger
         let id = oldid;
         if (value?.Value) {
+
             let data = JSON.parse(JSON.stringify(dynami_state_array));
-            // data[key].value = value;
-            // setDynamic_state_array(data);
+            let error = false
+            Object.keys(data).forEach((v) => {
+                if (data[v]?.value?.Value === value?.Value) {
+                    error = true
+                }
+            })
 
-            // for dynamic auto
+            if (!error) {
+                // data[key].value = value;
+                // setDynamic_state_array(data);
 
-            let options_for_dynamicauto, options_for_auto = [];
-            let removed_value_for_dymicauto, removed_value_for_auto, added_value_for_dymicauto, added_value_for_auto = {};
-            removed_value_for_dymicauto = data[oldid].value
-            removed_value_for_auto = value
-            added_value_for_auto = removed_value_for_dymicauto
-            added_value_for_dymicauto = removed_value_for_auto
+                // for dynamic auto
 
-            // dynamic options //
-            //removing
-            options_for_dynamicauto = data[oldid]?.filteredoption?.filter((v) => ((v.Value !== removed_value_for_dymicauto?.Value)))
-            options_for_dynamicauto = options_for_dynamicauto?.filter((v) => (v.Value !== added_value_for_dymicauto?.Value))
-            //adding
-            options_for_dynamicauto = [...options_for_dynamicauto, added_value_for_dymicauto]
+                let options_for_dynamicauto, options_for_auto = [];
+                let removed_value_for_dymicauto, removed_value_for_auto, added_value_for_dymicauto, added_value_for_auto = {};
+                removed_value_for_dymicauto = data[oldid].value
+                removed_value_for_auto = value
+                added_value_for_auto = removed_value_for_dymicauto
+                added_value_for_dymicauto = removed_value_for_auto
 
-            // unique
-            //options_for_dynamicauto = [... new Set(options_for_dynamicauto.map((item) => item))]
+                // dynamic options //
+                //removing
+                options_for_dynamicauto = data[oldid]?.filteredoption?.filter((v) => ((v.Value !== removed_value_for_dymicauto?.Value)))
+                options_for_dynamicauto = options_for_dynamicauto?.filter((v) => (v.Value !== added_value_for_dymicauto?.Value))
+                //adding
+                options_for_dynamicauto = [...options_for_dynamicauto, added_value_for_dymicauto]
+
+                // unique
+                //options_for_dynamicauto = [... new Set(options_for_dynamicauto.map((item) => item))]
 
 
-            // for auto options //
-            //removing
-            options_for_auto = optionsfordropdown.filter((v) => ((v.Value !== removed_value_for_auto?.Value)))
-            options_for_auto = options_for_auto.filter((v) => (v.Value !== added_value_for_auto?.Value))
-            //adding
-            options_for_auto = [...options_for_auto, added_value_for_auto]
-            //unique
-            // options_for_auto = [...options_for_auto, added_value_for_auto]
+                // for auto options //
+                //removing
+                options_for_auto = optionsfordropdown.filter((v) => ((v.Value !== removed_value_for_auto?.Value)))
+                options_for_auto = options_for_auto.filter((v) => (v.Value !== added_value_for_auto?.Value))
+                //adding
+                options_for_auto = [...options_for_auto, added_value_for_auto]
+                //unique
+                // options_for_auto = [...options_for_auto, added_value_for_auto]
 
-            // add schema change
-            //removing
-            let schemaarryforstate = state.add_schema_arry?.filter((v) => v !== removed_value_for_dymicauto?.Value)
-            // adding
-            schemaarryforstate = [...schemaarryforstate, removed_value_for_dymicauto?.Value]
-            //unique
-            //schemaarryforstate = [...new Set(schemaarryforstate)]
+                // add schema change
+                //removing
+                let schemaarryforstate = state.add_schema_arry?.filter((v) => v !== removed_value_for_dymicauto?.Value)
+                // adding
+                schemaarryforstate = [...schemaarryforstate, removed_value_for_dymicauto?.Value]
+                //unique
+                //schemaarryforstate = [...new Set(schemaarryforstate)]
 
-            let stateschema = {
-                id: id,
-                label: value?.label,
-                value: value,
-                filteredoption: options_for_dynamicauto,
-            };
-            setDynamic_state_array({ ...dynami_state_array, [id]: stateschema });
-            setOptionsfordropdown(options_for_auto);
-            setState({ ...state, add_schema_currentvalue: "", add_schema_arry: schemaarryforstate })
+                let stateschema = {
+                    id: id,
+                    label: value?.label,
+                    value: value,
+                    filteredoption: options_for_dynamicauto,
+                };
+                setDynamic_state_array({ ...dynami_state_array, [id]: stateschema });
+                setOptionsfordropdown(options_for_auto);
+                setState({ ...state, add_schema_currentvalue: "", add_schema_arry: schemaarryforstate })
+            }
+            else {
+                alert.setSnack({
+                    ...alert, open: true,
+                    severity: "warning",
+                    msg: "Please select other schema!",
+                    vertical: AlertProps.vertical.top,
+                    horizontal: AlertProps.horizontal.center
+                })
+            }
+
 
         }
         else {
@@ -207,12 +228,19 @@ function Savesegment() {
     };
 
     const removeitem = (value) => {
-        let data = JSON.parse(JSON.stringify(dynami_state_array));
-        let schemaarry = state.add_schema_arry.filter((v) => v !== data?.[value]?.value?.Value)
-        setOptionsfordropdown([...optionsfordropdown, data?.[value]?.value])
-        delete data[value];
-        setDynamic_state_array(data);
-        setState({ ...state, add_schema_arry: schemaarry })
+        if (Object.keys(dynami_state_array).length > 1) {
+            let data = JSON.parse(JSON.stringify(dynami_state_array));
+            let schemaarry = state.add_schema_arry.filter((v) => v !== data?.[value]?.value?.Value)
+            setOptionsfordropdown([...optionsfordropdown, data?.[value]?.value])
+            delete data[value];
+            setDynamic_state_array(data);
+            setState({ ...state, add_schema_arry: schemaarry })
+        }
+        else {
+            setDynamic_state_array({});
+            setState({ ...state, add_schema_arry: [] })
+
+        }
     };
     const back = () => {
         drawer.setDrawer({ ...drawer, open: false, component: <></> })
@@ -252,6 +280,7 @@ function Savesegment() {
     console.log(state);
 
     const savesegment = async () => {
+        backdrop.setBackDrop({ ...backdrop, open: true, message: "Saving Segment" })
         let nameerror = state?.segmentname?.length === 0
         let schemaerror = state.add_schema_arry?.length === 0
         if (!nameerror && !schemaerror) {
@@ -296,6 +325,8 @@ function Savesegment() {
                         })
                     }
                     console.log({ res })
+                    backdrop.setBackDrop({ ...backdrop, open: false, message: "" })
+
                 })
                 .catch((err) => {
                     console.log({ err })
@@ -306,6 +337,8 @@ function Savesegment() {
                         vertical: AlertProps.vertical.top,
                         horizontal: AlertProps.horizontal.center
                     })
+                    backdrop.setBackDrop({ ...backdrop, open: false, message: "" })
+
                 })
         }
         else {
@@ -337,11 +370,12 @@ function Savesegment() {
                 })
             }
         }
+
     }
     return (
         <div className={classes.outerdiv}>
             <TopNavbar name="Saving Segment" back={back} />
-            <div style={{ padding: "20px" }}>
+            <div style={{ padding: "20px", }}>
                 <Typography className={classes.label}>Enter the Name of the segment</Typography>
                 <TextField
                     value={state?.segmentname ?? ""}
@@ -367,47 +401,49 @@ function Savesegment() {
                         <Typography className={classes.inlinetypo}>Group Traits</Typography>
                     </span>
                 </div>
-                {Object.keys(dynami_state_array)?.map((v, i) => {
-                    console.log(dynami_state_array?.[v]?.value ?? "");
+                <div style={{ maxHeight: "40vh", overflow: "auto" }}>
+                    {Object.keys(dynami_state_array)?.map((v, i) => {
+                        console.log(dynami_state_array?.[v]?.value ?? "");
 
-                    return (
-                        <Grid
-                            container
-                            lg={12}
-                            md={12}
-                            sm={12}
-                            alignItems="center"
-                            spacing={1}
-                            className={classes.dynamictopgrid}
-                        >
-                            <Grid item container lg={1} md={1} sm={1} justify="center">
-                                <Circle color={dynami_state_array?.[v]?.value.color ?? "red"} />
+                        return (
+                            <Grid
+                                container
+                                lg={12}
+                                md={12}
+                                sm={12}
+                                alignItems="center"
+                                spacing={1}
+                                className={classes.dynamictopgrid}
+                            >
+                                <Grid item container lg={1} md={1} sm={1} justify="center">
+                                    <Circle color={dynami_state_array?.[v]?.value.color ?? "red"} />
+                                </Grid>
+                                <Grid item lg={9} md={9} sm={9}>
+                                    <Autocomplete
+                                        id="combo-box-demo"
+                                        options={dynami_state_array?.[v]?.filteredoption ?? []}
+                                        getOptionLabel={(option) => option?.label ?? ""}
+                                        size="small"
+                                        renderInput={(params) => (
+                                            <TextField
+                                                {...params}
+                                                margin="dense"
+                                                label={dynami_state_array?.[v].label}
+                                                variant="outlined"
+                                            />
+                                        )}
+                                        // closeIcon={<ExpandMoreIcon fontSize='small' />}
+                                        value={dynami_state_array?.[v]?.Value ?? ""}
+                                        onChange={(e, value) => dynamicOnchange(value, v)}
+                                    />
+                                </Grid>
+                                <Grid container item lg={2} md={2} sm={2} justify="center">
+                                    <img src={IndeterminateCheckBoxsvg} onClick={() => removeitem(v)} style={{ cursor: "pointer" }} />
+                                </Grid>
                             </Grid>
-                            <Grid item lg={9} md={9} sm={9}>
-                                <Autocomplete
-                                    id="combo-box-demo"
-                                    options={dynami_state_array?.[v]?.filteredoption ?? []}
-                                    getOptionLabel={(option) => option?.label ?? ""}
-                                    size="small"
-                                    renderInput={(params) => (
-                                        <TextField
-                                            {...params}
-                                            margin="dense"
-                                            label={dynami_state_array?.[v].label}
-                                            variant="outlined"
-                                        />
-                                    )}
-                                    // closeIcon={<ExpandMoreIcon fontSize='small' />}
-                                    value={dynami_state_array?.[v]?.Value ?? ""}
-                                    onChange={(e, value) => dynamicOnchange(value, v)}
-                                />
-                            </Grid>
-                            <Grid container item lg={2} md={2} sm={2} justify="center">
-                                <img src={IndeterminateCheckBoxsvg} onClick={() => removeitem(v)} style={{ cursor: "pointer" }} />
-                            </Grid>
-                        </Grid>
-                    );
-                })}
+                        );
+                    })}
+                </div>
 
                 <Grid
                     container
@@ -444,6 +480,7 @@ function Savesegment() {
                         <img src={IndeterminateCheckBoxsvg} onClick={() => setShow(!show)} style={{ cursor: "not-allowed" }} />
                     </Grid>
                 </Grid>
+
                 <Link className={classes.link} onClick={handleonpresslink}>+ Add new schema</Link>
                 <div className={classes.bottmnav}>
                     <Button className={classes.save} onClick={savesegment}>Save the Segment</Button>

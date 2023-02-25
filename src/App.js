@@ -17,17 +17,17 @@ const App = () => {
         <AppTheme>
           <CssBaseline />
           <AppAlert>
-            <AppDialog>
-              <AppDrawer>
-                <AppBackdrop>
+            <AppBackdrop>
+              <AppDialog>
+                <AppDrawer>
                   <RouterApp />
-                </AppBackdrop>
-              </AppDrawer>
-            </AppDialog>
+                </AppDrawer>
+              </AppDialog>
+            </AppBackdrop>
           </AppAlert>
         </AppTheme>
       </AppAuth>
-    </AppErrorBoundary>
+    </AppErrorBoundary >
   );
 };
 export default App;

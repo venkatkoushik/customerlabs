@@ -30,6 +30,7 @@ class AppBackDrop extends React.Component {
     };
 
     set = (props) => {
+        debugger
         this.setState({ ...props });
     };
 
