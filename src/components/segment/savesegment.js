@@ -83,11 +83,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 function Savesegment() {
-    // {
-    // state,
-    // setState,
-    // handlechange = () => null
-    // }
+
     const drawer = useContext(DrawerContext)
     const alert = useContext(AlertContext)
     const backdrop = useContext(BackdropContext)
@@ -129,26 +125,10 @@ function Savesegment() {
         }
     };
 
-    const unique = (array) => {
-        let uni = []
-        array.forEach((v) => {
-            let a = 0
-            array.forEach((e) => {
-                if (v.Value === e.Value) {
-                    a++
-                }
-            })
-            if (a === 1) {
-                uni.push(v)
-            }
-        })
-    }
-
     const dynamicOnchange = (value, oldid) => {
         debugger
         let id = oldid;
         if (value?.Value) {
-
             let data = JSON.parse(JSON.stringify(dynami_state_array));
             let error = false
             Object.keys(data).forEach((v) => {
@@ -156,13 +136,8 @@ function Savesegment() {
                     error = true
                 }
             })
-
             if (!error) {
-                // data[key].value = value;
-                // setDynamic_state_array(data);
-
                 // for dynamic auto
-
                 let options_for_dynamicauto, options_for_auto = [];
                 let removed_value_for_dymicauto, removed_value_for_auto, added_value_for_dymicauto, added_value_for_auto = {};
                 removed_value_for_dymicauto = data[oldid].value
@@ -175,7 +150,7 @@ function Savesegment() {
                 options_for_dynamicauto = data[oldid]?.filteredoption?.filter((v) => ((v.Value !== removed_value_for_dymicauto?.Value)))
                 options_for_dynamicauto = options_for_dynamicauto?.filter((v) => (v.Value !== added_value_for_dymicauto?.Value))
                 //adding
-                options_for_dynamicauto = [...options_for_dynamicauto, added_value_for_dymicauto]
+                options_for_dynamicauto = [...options_for_dynamicauto, removed_value_for_dymicauto]
 
                 // unique
                 //options_for_dynamicauto = [... new Set(options_for_dynamicauto.map((item) => item))]
@@ -194,7 +169,7 @@ function Savesegment() {
                 //removing
                 let schemaarryforstate = state.add_schema_arry?.filter((v) => v !== removed_value_for_dymicauto?.Value)
                 // adding
-                schemaarryforstate = [...schemaarryforstate, removed_value_for_dymicauto?.Value]
+                schemaarryforstate = [...schemaarryforstate, added_value_for_dymicauto?.Value]
                 //unique
                 //schemaarryforstate = [...new Set(schemaarryforstate)]
 
@@ -217,14 +192,7 @@ function Savesegment() {
                     horizontal: AlertProps.horizontal.center
                 })
             }
-
-
         }
-        else {
-
-            // setDynamic_state_array({ ...dynami_state_array, [dynami_state_array[id]]: { ...dynami_state_array[id], label: "" } });
-        }
-
     };
 
     const removeitem = (value) => {
@@ -280,10 +248,11 @@ function Savesegment() {
     console.log(state);
 
     const savesegment = async () => {
-        backdrop.setBackDrop({ ...backdrop, open: true, message: "Saving Segment" })
         let nameerror = state?.segmentname?.length === 0
         let schemaerror = state.add_schema_arry?.length === 0
         if (!nameerror && !schemaerror) {
+            backdrop.setBackDrop({ ...backdrop, open: true, message: "Saving Segment" })
+
             let arry = [];
             Object.keys(dynami_state_array).forEach((v) => {
                 let obj = {
@@ -326,7 +295,12 @@ function Savesegment() {
                     }
                     console.log({ res })
                     backdrop.setBackDrop({ ...backdrop, open: false, message: "" })
-
+                    setState({
+                        segmentname: "",
+                        add_schema_currentvalue: "",
+                        add_schema_arry: [],
+                    })
+                    setDynamic_state_array({})
                 })
                 .catch((err) => {
                     console.log({ err })
@@ -337,6 +311,8 @@ function Savesegment() {
                         vertical: AlertProps.vertical.top,
                         horizontal: AlertProps.horizontal.center
                     })
+
+
                     backdrop.setBackDrop({ ...backdrop, open: false, message: "" })
 
                 })
